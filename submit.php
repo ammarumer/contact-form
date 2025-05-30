@@ -71,7 +71,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             //$mail->Port = 587;
             $mail->Port = 587;
 //            // Email content
-           $mail->setFrom('ammarumer007@gmail.com', 'Contact Form');
+           $mail->setFrom('MS_kyXSre@test-68zxl27pz5e4j905.mlsender.net', 'Contact Form');
 //            $mail->addAddress('ammaumer007@gmail.com'); // receiver
 //            $mail->Subject = 'New Contact Form Submission';
 //            $mail->Body    = "Name: $name\nEmail: $email\nMessage:\n$message";
