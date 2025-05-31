@@ -4,6 +4,8 @@ use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 
 require 'vendor/autoload.php';  // Composer autoload
+$config = require 'config.php'; // Load credentials
+
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     // Sanitize and assign inputs
@@ -48,7 +50,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             exit;
         }
 
-                // Store it in the session temporarily
+        // Store it in the session temporarily
         $_SESSION['name'] = $name;
         $_SESSION['email'] = $email;
         $_SESSION['message'] = $message;
@@ -58,26 +60,22 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         try {
             // SMTP settings
             $mail->isSMTP();
-            $mail->Host = 'smtp.mailersend.net';
-            //$mail->Host = 'smtp.elasticemail.com';
-            //$mail->Host = 'smtp.resend.com';
+
+            $mail->Host = $config['host'];
             $mail->SMTPAuth = true;
-            $mail->Username = 'MS_kyXSre@test-68zxl27pz5e4j905.mlsender.net'; // same as the email you verified
-            //$mail->Username = 'resend'; // same as the email you verified
-           // $mail->Password = 'F237F1FB209013DB20B70706E8B632D8D218';             // from API Key step
-            $mail->Password = 'mssp.gNSZTDH.0r83ql3vk1zgzw1j.KtoJBYO';             // from API Key step
-            //$mail->Password = 're_7NLw4uco_86T7kLG9YgMxXbBsCfiaoy7b';             // from API Key step
+            $mail->Username = $config['username'];
+            $mail->Password = $config['password']; // not your Gmail login!
             $mail->SMTPSecure = 'tls';
-            //$mail->Port = 587;
-            $mail->Port = 587;
-//            // Email content
-           $mail->setFrom('MS_kyXSre@test-68zxl27pz5e4j905.mlsender.net', 'Contact Form');
-//            $mail->addAddress('ammaumer007@gmail.com'); // receiver
-//            $mail->Subject = 'New Contact Form Submission';
-//            $mail->Body    = "Name: $name\nEmail: $email\nMessage:\n$message";
+            $mail->Port = $config['port'];
 
-            //$mail->send();
+            // === Email to Admin ===
+            $mail->setFrom($config['from_email'], 'Contact Form');
+            $mail->addAddress($config['from_email']); // receiver
+            $mail->Subject = 'New Contact Form Submission';
+            $mail->Body    = "Name: $name\nEmail: $email\nMessage:\n$message";
+            $mail->send();
 
+            // === Confirmation Email to Visitor ===
             $mail->clearAllRecipients();
             $mail->addAddress($email); // Visitor's email
             $mail->Subject = 'Thanks for contacting us!';
@@ -91,10 +89,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             echo "<p style='color:red;'>Mailer Error: " . $mail->ErrorInfo . "</p>";
         }
 
-
-//        // Redirect to thank you page
-//        header("Location: thank-you.php");
-//        exit;
     } else {
         // Display errors
         foreach ($errors as $error) {
