@@ -1,23 +1,56 @@
-# Contact Form (PHP)
+# PHP Contact Form with Email Notification
 
-A simple and secure contact form built with HTML, CSS, and PHP.  
-This project demonstrates form handling, input validation, and clean UI.
+A simple contact form built using HTML, CSS, and PHP with PHPMailer for sending email notifications. This project is suitable for beginner to intermediate developers and demonstrates how to integrate a working email feature with SMTP support.
 
-## 🚀 Demo
-https://contact-form.free.nf
+---
 
-## 🛠 Technologies Used
-- PHP
+## 🔗 Live Demo
+
+👉 [https://contact-form.free.nf](https://contact-form.free.nf)
+
+---
+
+## 📦 Tech Stack
+
 - HTML5
 - CSS3
+- PHP 8+
+- PHPMailer (via Composer)
+- Google SMTP (configured for transactional email)
 
-## 📷 Screenshot
-<!-- Add screenshot here if you want -->
+---
 
-## 📁 Features
-- Simple contact form with Name, Email, and Message fields
-- Server-side validation
-- Thank-you confirmation page
+## ✉️ Features
+
+- Contact form with Name, Email, and Message fields
+- Sends email to site owner using PHPMailer + SMTP
+- Sends confirmation email to the visitor
+- Uses Composer to manage dependencies
+- `.gitignore` prevents credentials from being committed
+- Fully deployed on a free host (InfinityFree)
+
+---
+
+## 🔐 Security Notes
+
+- SMTP credentials and API keys are stored in a separate `config.php` file
+- `config.php` is **excluded from Git** via `.gitignore`
+- Always keep secret credentials out of public repositories
+
+---
+
+## 🚀 Deployment
+
+This project is live at [https://contact-form.free.nf](https://contact-form.free.nf) and was deployed using:
+- InfinityFree for free PHP hosting
+- FileZilla / Web File Manager for uploading files
+- Composer for managing the `vendor/` folder
+
+---
+
+## 📁 Folder Structure
+
+
 
 ## 🧪 How to Run Locally
 1. Clone the repo:
@@ -30,11 +63,7 @@ https://contact-form.free.nf
 
 🧩 Improvements Planned
 
-    Store form data in a CSV or database
-
-    Send email notification
-
-    Add input sanitization and spam protection
+    Store form data in a database
 
 📄 License
 
