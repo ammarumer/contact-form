@@ -61,6 +61,32 @@ This project is live at [https://contact-form.free.nf](https://contact-form.free
    php -S localhost:8000
 3. Visit http://localhost:8000 in your browser   
 
+
+---
+
+## 🧠 Learning Outcome
+
+This project demonstrates:
+- Using Composer and PHP packages (PHPMailer)
+- Sending transactional emails with SMTP
+- Clean GitHub project structure with production-ready practices
+
+---
+
+## 📸 Screenshot
+
+![Contact Form Screenshot](screenshot.png)
+
+---
+
+## 👨‍💻 Author
+
+**Ammar Umer**  
+[GitHub](https://github.com/ammarumer) | [LinkedIn](https://www.linkedin.com/in/ammar-umer)
+
+---
+
+
 🧩 Improvements Planned
 
     Store form data in a database
